@@ -8,11 +8,24 @@ function App() {
     "livestream today",
   ]);
 
+  const [input, setInput] = useState("");
+
+  const addTodo = (event) => {
+    event.preventDefault(); // will stop the REFRESH
+    setTodos([...todos, input]);
+    setInput("");
+  };
+
   return (
     <div className="App">
       <h1>Hello Programmers!!</h1>
-      <input type="text" />
-      <button>Add todo</button>
+      <form>
+        <input
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+        />
+        <button onClick={addTodo}>Add todo</button>
+      </form>
 
       <ul>
         {todos.map((todo) => (
